@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Outlet,
 } from "react-router-dom";
 
 const Landing = lazy(() => import("./pages/Landing"));
@@ -25,7 +26,11 @@ const Fallback = () => (
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Suspense fallback={<Fallback />} />}>
+    <Route element={
+      <Suspense fallback={<Fallback />}>
+        <Outlet />
+      </Suspense>
+    }>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />

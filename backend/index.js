@@ -13,8 +13,14 @@ import transactionRouter from "./routes/transactionRouter.js";
 import { notFound, errorHandler } from "./controllers/errorController.js";
 
 const app = express();
+
 app.use(
   cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      return callback(null, true);
+    },
     credentials: true,
   }),
 );

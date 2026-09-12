@@ -55,8 +55,8 @@ export const postLogin = async (req, res, next) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: "strict",
+      secure: config.cookieSecret === "production",
+      sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, //7days
     });
 
@@ -202,7 +202,7 @@ export const getRefreshToken = async (req, res, next) => {
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
       secure: config.cookieSecret === "production",
-      sameSite: "strict",
+      sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
