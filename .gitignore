@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output and coverage
+dist/
+out/
+coverage/
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Local tooling and editor files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local API-client and agent configuration
+.postman/
+postman/
+opencode.js

@@ -4,16 +4,17 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
+
 //local
 import config from "./config/config.js";
 import authRouter from "./routes/authRouter.js";
+import transactionRouter from "./routes/transactionRouter.js";
 import { notFound, errorHandler } from "./controllers/errorController.js";
-import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(
   cors({
-    origin: config.frontendUrl,
     credentials: true,
   }),
 );
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
+app.use("/api/transaction", transactionRouter);
 
 app.use(notFound);
 app.use(errorHandler);
